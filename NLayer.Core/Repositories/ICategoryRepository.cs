@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace NLayer.Core.Repositories
 {
-    public interface IProductRepository : IGenericRepository<Product>
+    public interface ICategoryRepository: IGenericRepository<Category>
     {
-        //isimlendirme olarak sonuna async gelmeliydi
-        Task<List<Product>> GetProductsWithCategory();
+        Task<Category> GetSingleCategoryByIdWidthProductsAsync(int categoryId);
     }
 }
