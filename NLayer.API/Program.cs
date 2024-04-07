@@ -32,7 +32,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// bir filter constructor'ýnda service veya class'ý di olarak geçiyorsa program.cs'de eklenmesi gerekiyor
+builder.Services.AddMemoryCache();
+
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
 

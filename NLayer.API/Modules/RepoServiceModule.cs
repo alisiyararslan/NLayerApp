@@ -29,8 +29,11 @@ namespace NLayer.API.Modules
 
             var apiAssembly = Assembly.GetExecutingAssembly();
 
+            //repostiroy katmanındaki herhangi bir sınıf
             var repoAssembly = Assembly.GetAssembly(typeof(AppDbContext));
 
+
+            //service katmanındaki herhangi bir sınıf
             var serviceAssembly = Assembly.GetAssembly(typeof(MapProfile));
 
             builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly)
