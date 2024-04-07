@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace NLayer.Service.Exceptions
 {
-    internal class ClientSideException
+    public class ClientSideException : Exception
     {
+        // message'i alır Exceptionın constructoruna gönderir
+        public ClientSideException(string message) : base(message)
+        {
+            
+        }
     }
 }
