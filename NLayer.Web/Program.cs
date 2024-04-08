@@ -5,11 +5,14 @@ using Microsoft.EntityFrameworkCore;
 using NLayer.Repository;
 using System.Reflection;
 using NLayer.Service.Mapping;
+using FluentValidation.AspNetCore;
+using NLayer.Service.Validations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidator>());
+;
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
