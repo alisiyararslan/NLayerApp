@@ -51,6 +51,7 @@ namespace NLayer.Repository
         {
             foreach (var item in ChangeTracker.Entries())
             {
+                // If the type of item.Entity matches BaseEntity, then item.Entity is cast to the type BaseEntity and assigned to entityReference. 
                 if (item.Entity is BaseEntity entityReference)
                 {
                     switch (item.State)
