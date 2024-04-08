@@ -69,6 +69,7 @@ namespace NLayer.Web.Controllers
             return View(_mapper.Map<ProductDto>(product));
         }
 
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpPost]
         public async Task<IActionResult> Update(ProductDto productDto)
         {
