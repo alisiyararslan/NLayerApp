@@ -11,6 +11,12 @@ namespace NLayer.API.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
 
+        public CategoriesController(ICategoryService categoryService, IMapper mapper)
+        {
+            _categoryService = categoryService;
+            _mapper = mapper;
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -23,11 +29,7 @@ namespace NLayer.API.Controllers
 
 
         }
-        public CategoriesController(ICategoryService categoryService, IMapper mapper)
-        {
-            _categoryService = categoryService;
-            _mapper = mapper;
-        }
+        
 
         [HttpGet("[action]/{categoryId}")]
         public async Task<IActionResult> GetSingleCategoryByIdWidthProducts(int categoryId)
