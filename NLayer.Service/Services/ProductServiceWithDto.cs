@@ -38,6 +38,8 @@ namespace NLayer.Service.Services
 
         }
 
+        
+
         public async Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsWithCategory()
         {
             var products = await _productRepository.GetProductsWithCategory();
@@ -57,6 +59,22 @@ namespace NLayer.Service.Services
 
             return CustomResponseDto<NoContentDto>.Success(StatusCodes.Status204NoContent);
 
+
+        }
+
+
+
+        public async Task<CustomResponseDto<IEnumerable<ProductDto>>> AddRangeAsync(IEnumerable<ProductCreateDto> dtos)
+        {
+            var newEntitities = _mapper.Map<IEnumerable<Product>>(dtos);
+
+            await _productRepository.AddRangeAsync(newEntitities);
+
+            await _unitOfWork.CommitAsync();
+
+            var newDtos = _mapper.Map<IEnumerable<ProductDto>>(newEntitities);
+
+            return CustomResponseDto<IEnumerable<ProductDto>>.Success(StatusCodes.Status200OK, newDtos);
 
         }
     }
